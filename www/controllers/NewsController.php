@@ -5,7 +5,11 @@ class NewsController{
 
     public function actionAll()
     {
-        var_dump(NewsModel::findAll());
+        $article = new NewsModel();
+        $article->title = 'Hello World 2';
+        $article->author = 'Umars';
+        $article->content = 'Umars first content';
+        $article->insert();
         /*
         $news = News::getAll();
         $view = new View();
