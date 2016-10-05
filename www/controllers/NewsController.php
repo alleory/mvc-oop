@@ -5,11 +5,13 @@ class NewsController{
 
     public function actionAll()
     {
+        var_dump(NewsModel::findAll());
+        /*
         $news = News::getAll();
         $view = new View();
         $view->items = $news;
         $view->display('news/all.php');
-
+        */
     }
 
     public function actionOne()
