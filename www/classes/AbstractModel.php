@@ -46,10 +46,10 @@ abstract class AbstractModel
         $db->setClassName(get_called_class());
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . '=:value';
         $res = $db->query($sql, [':value' => $value]);
-        if (!empty($res)){
-            return $res[0];
+        if (empty($res)){
+            throw new ModelException('Nothing was found...');
         }
-        return false;
+        return $res;
     }
 
     protected function insert()
@@ -60,12 +60,7 @@ abstract class AbstractModel
         {
             $data[':' . $col] = $this->data[$col];
         }
-        $sql = '
-          INSERT INTO ' . static::$table . '
-          (' . implode(', ', $cols). ')
-          VALUES
-          (' . implode(', ', array_keys($data)). ')
-        ';
+        $sql = 'INSERT INTO ' . static::$table . '(' . implode(', ', $cols). ')VALUES(' . implode(', ', array_keys($data)). ')';
 
         $db = new DB();
         $db->execute($sql, $data);
@@ -84,11 +79,7 @@ abstract class AbstractModel
             }
             $cols[] = $k . '=:' . $k;
         }
-        $sql = '
-            UPDATE ' . static::$table . '
-            SET ' . implode(', ', $cols) . '
-            WHERE id=:id
-        ';
+        $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $cols) . ' WHERE id=:id';
         $db = new DB();
         $db->execute($sql, $data);
     }

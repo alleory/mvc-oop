@@ -7,7 +7,12 @@ $act = isset($_GET['act']) ? $_GET['act'] : 'All';
 
 $controllerClassName = $ctrl . 'Controller';
 
-$controller = new $controllerClassName;
+try{
 
-$method = 'action' . $act;
-$controller->$method();
+    $controller = new $controllerClassName;
+    $method = 'action' . $act;
+    $controller->$method();
+
+}catch (Exception $e){
+    die ('Something went wrong: ' . $e->getMessage());
+}
