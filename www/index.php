@@ -14,5 +14,7 @@ try{
     $controller->$method();
 
 }catch (Exception $e){
-    die ('Something went wrong: ' . $e->getMessage());
+    $view = new View();
+    $view->error = $e->getMessage();
+    $view->display('error.php');
 }
