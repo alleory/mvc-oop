@@ -1,5 +1,7 @@
 <?php
 
+namespace Application\Models;
+
 /**
  * Class NewsModel
  * @property $id
@@ -7,8 +9,8 @@
  * @property $content
  */
 
-class NewsModel
-    extends AbstractModel
+class News
+    extends \AbstractModel
 {
 
     protected static $table = 'news';
