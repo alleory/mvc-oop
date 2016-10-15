@@ -12,17 +12,21 @@ class News{
         $news = NewsModel::findAll();
         $view = new \View();
         $view->items = $news;
+        $view->display('default/header.php');
         $view->display('news/all.php');
+        $view->display('default/footer.php');
 
     }
 
     public function actionOne()
     {
         $id = $_GET['id'];
-        $item = NewsModel::getOne($id);
+        $newsById = NewsModel::findOneByPk($id);
         $view = new \View();
-        $view->assign('item', $item);
+        $view->items = $newsById;
+        $view->display('default/header.php');
         $view->display('news/one.php');
+        $view->display('default/footer.php');
     }
 
 }

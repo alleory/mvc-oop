@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    text-align: center;
+    color: white;
+    font-size: 60px;
+}
+p{
+    color: white;
+    font-size: 22px;
+}
+a{
+    color: white;
+    text-decoration: underline;
+}
+.container{
+    padding: 30px;
+    width: 1200px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: blue;
+}
+
+header.header{
+    width: 100%;
+    height: 250px;
+    background-color: red;
+}
+
+footer.footer{
+    width: 100%;
+    height: 250px;
+    background-color: green;
+}
